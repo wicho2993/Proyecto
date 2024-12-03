@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="username"
+        name="email"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-checkbox slot="start" [(ngModel)]="agreed" name="terms"></ion-checkbox>
+      <ion-label>
+        <a href="assets/Terms.pdf" target="_blank">Acepto los términos y condiciones</a>
+      </ion-label>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!username || !password">
+      Registrarse
+    </ion-button>
+
+    <ion-button expand="block" color="light" [routerLink]="['/login']">
+      Volver al Login
+    </ion-button>
+  </form>
+</ion-content>

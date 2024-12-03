@@ -1,17 +1,94 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content id="main-content" [fullscreen]="true">
+  <div class="contmain">
+    <div class="cont1">
+      <div class="subcont1">
+        <hr />
+        <div></div>
+        <ion-menu side="start" menuId="first" contentId="main-content">
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>Menú</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content>
+            <ion-list>
+              <ion-item button (click)="navigateTo('home')">
+                <ion-label>Home</ion-label>
+              </ion-item>
+              <ion-item button (click)="navigateTo('about')">
+                <ion-label>About</ion-label>
+              </ion-item>
+              <ion-item button (click)="navigateTo('contact')">
+                <ion-label>Contact</ion-label>
+              </ion-item>
+              <ion-item button color="danger" (click)="logout()">
+                <ion-label>Cerrar Sesión</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ion-menu>
+        
+        <div>
+          <hr />
+          <img
+            alt="Happy Nurse Logo"
+            src="https://th.bing.com/th?id=OIP.Sv-aG4gJQOEwC7qBiCfe_QHaFM&w=298&h=209&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+            width="500px"
+            height="auto"
+          />
+        </div>
+        <div></div>
+      </div>
+      <div class="subcont2">
+        <hr />
+        <div class="subsub1"></div>
+        <div class="subsub2">
+          <hr />
+          <hr />
+          <h1>Happy Nurse</h1>
+          <h2></h2>
+        </div>
+        <div class="subsub3"></div>
+      </div>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="cont2">
+      <h1>Gestión de Usuarios</h1>
+      <p>
+        Administra a los usuarios registrados: editar información, cambiar contraseña o eliminar un usuario.
+      </p>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <!-- Tabla de usuarios -->
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Lista de Usuarios</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item *ngFor="let user of usuarios">
+                    <ion-label>
+                      <h2>{{ user.nombre }}</h2>
+                      <p>Email: {{ user.email }}</p>
+                    </ion-label>
+                    <ion-button color="primary" (click)="editarUsuario(user)">
+                      Editar
+                    </ion-button>
+                    <ion-button color="secondary" (click)="cambiarContrasena(user)">
+                      Cambiar Contraseña
+                    </ion-button>
+                    <ion-button color="danger" (click)="eliminarUsuario(user)">
+                      Eliminar
+                    </ion-button>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
 </ion-content>

@@ -1,17 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content id="main-content" [fullscreen]="true">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="first"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-menu side="start" menuId="first" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item button (click)="navigateTo('home')">
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item button (click)="navigateTo('about')">
+          <ion-label>About</ion-label>
+        </ion-item>
+        <ion-item button (click)="navigateTo('contact')">
+          <ion-label>Contact</ion-label>
+        </ion-item>
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <ion-button color="danger" (click)="logout()">Cerrar Sesión</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card align="center">
+            <ion-card-header>
+              <ion-card-title>Bienvenido a la página About</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Encuentra información relevante sobre nuestra página.
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <!-- Mapa de OpenStreetMap con Leaflet -->
+      <ion-row>
+        <ion-col size="12">
+          <div id="map" style="height: 400px;"></div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Botón para mostrar notificación -->
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button color="primary" (click)="showNotification()">Mostrar Notificación</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- Información del desarrollador -->
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Información del Desarrollador</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p><strong>Nombre:</strong> Juan Pérez</p>
+              <p><strong>Email:</strong> <a href="mailto:juan.perez&#64;example.com">juan.perez&#64;example.com</a></p>
+              <p><strong>Teléfono:</strong> +52 123 456 7890</p>
+              <p><strong>Portafolio:</strong> <a href="https://www.portafolio-developer.com" target="_blank">www.portafolio-developer.com</a></p>
+              <p>Juan es un desarrollador de software especializado en aplicaciones móviles, con experiencia en Ionic, Angular y tecnologías modernas. Comprometido con la excelencia y soluciones efectivas.</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

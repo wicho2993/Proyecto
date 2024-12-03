@@ -1,0 +1,24 @@
+<ion-content>
+  <div>
+    <h1>Login</h1>
+    <form (ngSubmit)="onLogin()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">Login</ion-button>
+    </form>
+  </div>
+
+  <div class="signup-section">
+    <ion-text>
+      <p>¿No tienes cuenta? <a [routerLink]="['/signup']">Regístrate</a></p>
+    </ion-text>
+  </div>
+</ion-content>

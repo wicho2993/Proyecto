@@ -32,7 +32,9 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -136,7 +138,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "c5b4bdd0-793c-49c6-bf6c-2eaca70fe269"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
@@ -146,4 +149,6 @@
       "styleext": "scss"
     }
   }
+
+
 }
