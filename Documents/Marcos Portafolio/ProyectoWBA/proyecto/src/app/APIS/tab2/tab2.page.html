@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Clima</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Ciudad</ion-label>
+    <ion-input [(ngModel)]="cityName"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="getWeather()">Obtener Clima</ion-button>
+
+  <ion-card *ngIf="weatherData">
+    <ion-card-header>
+      <ion-card-title>{{ weatherData.name }}</ion-card-title>
+      <ion-card-subtitle>{{ weatherData.weather[0].description }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Temperatura: {{ weatherData.main.temp }} °C</p>
+      <p>{{ temperatureMessage }}</p>
+    </ion-card-content>
+  </ion-card>
+
+ 
+</ion-content>

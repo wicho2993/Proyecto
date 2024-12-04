@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Búsqueda de Canciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Botón de iniciar sesión en Spotify solo si el usuario no ha iniciado sesión -->
+  <ion-button expand="full" (click)="loginWithSpotify()" *ngIf="!isLoggedIn">
+    Iniciar sesión en Spotify
+  </ion-button>
+
+  <!-- Input para buscar canciones solo si el usuario está logueado -->
+  <ion-item *ngIf="isLoggedIn">
+    <ion-input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      placeholder="Buscar canciones..." 
+      (ionInput)="searchSongs()">
+    </ion-input>
+  </ion-item>
+
+  <!-- Mostrar recomendaciones de canciones -->
+  <ion-list *ngIf="isLoggedIn && recommendations.length > 0">
+    <ion-item *ngFor="let song of recommendations">
+      <ion-thumbnail slot="start">
+        <img [src]="song.album.images[0].url">
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{ song.name }}</h2>
+        <p>{{ song.artists[0].name }}</p>
+      </ion-label>
+
+      <ion-button *ngIf="song.preview_url" (click)="playPausePreview(song.preview_url)">
+        {{ currentlyPlayingUrl === song.preview_url && isPlaying ? 'Pausar' : 'Reproducir' }}
+      </ion-button>
+
+      <ion-note *ngIf="!song.preview_url">Sin vista previa</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

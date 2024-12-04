@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conversión de Moneda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Ingresa un país</ion-label>
+    <ion-input type="text" [(ngModel)]="country" placeholder="Ejemplo: México"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="getExchangeRate()">Consultar tipo de cambio</ion-button>
+
+  <div *ngIf="currencyData">
+    <h2>Tipo de cambio de {{ currencyData.code }} a MXN:  ${{ currencyData.rate }}</h2>
+    
+    <!-- Botón de siguiente para ir a Tab 2 -->
+    <ion-button expand="full" color="success" (click)="goToTab2()">Siguiente</ion-button>
+  </div>
+</ion-content>
